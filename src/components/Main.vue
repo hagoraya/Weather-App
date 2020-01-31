@@ -1,15 +1,13 @@
 <template>
   <div id="main-div">
     <div id="temp-div">
-      <div id="display-temp-bottomgrid" v-if="forecast">
-        <div id="temp-summ-loc">
-          <div id="big-temp-div">
-            <span>{{currentTemp}}°</span>
-          </div>
-          <div id="summ-loc">
-            <span>{{forecast.currently.summary}} {{icons[forecast.currently.icon]}} {{address.name}}</span>
-            <span></span>
-          </div>
+      <div id="temp-summ-loc">
+        <div id="big-temp-div">
+          <span>{{currentTemp}}°</span>
+        </div>
+        <div id="summ-loc">
+          <span>{{forecast.currently.summary}} {{icons[forecast.currently.icon]}} {{address.name}}</span>
+          <span></span>
         </div>
       </div>
     </div>
@@ -24,7 +22,7 @@
           </b-input-group>
         </div>
         <div id="majorCities">
-          <p id="Los Angeles" @click="newPresetLocation($event) ">Los Angeles</p>
+          <p id="Los Angeles" @click="newPresetLocation($event)">Los Angeles</p>
           <p id="Toronto" @click="newPresetLocation($event)">Toronto</p>
           <p id="London" @click="newPresetLocation($event)">London</p>
           <p id="Istanbul" @click="newPresetLocation($event)">Istanbul</p>
@@ -57,9 +55,9 @@
         <p>Tomorrow</p>
 
         <div id="thisWeek">
-          <p>Percipitation chance</p>
+          <p>Precipitation chance</p>
           <p>{{tomprecentpp}}%</p>
-          <p>Hemperature High</p>
+          <p>Temperature High</p>
           <p>{{tomTempHigh}}</p>
           <p>Temperature Low</p>
           <p>{{tomTempLow}}</p>
@@ -91,24 +89,24 @@ export default {
       icons: {
         "clear-day": "🌞",
         "clear-night": "🌙",
-        "rain": "🌧",
-        "snow": "🌨",
-        "sleet": "⛷",
-        "wind": "💨",
-        "fog": "🌫",
-        "cloudy": "☁",
+        rain: "🌧",
+        snow: "🌨",
+        sleet: "⛷",
+        wind: "💨",
+        fog: "🌫",
+        cloudy: "☁",
         "partly-cloudy-day": "⛅",
         "partly-cloudy-night": "🌚"
       },
       backgrounds: {
         "clear-day": "../assets/images/clear-day.jpg",
         "clear-night": "🌙",
-        "rain": "🌧",
-        "snow": "🌨",
-        "sleet": "⛷",
-        "wind": "../assets/images/wind.jpg",
-        "fog": "🌫",
-        "cloudy": "../assets/images/cloudy.jpg",
+        rain: "🌧",
+        snow: "🌨",
+        sleet: "⛷",
+        wind: "../assets/images/wind.jpg",
+        fog: "🌫",
+        cloudy: "../assets/images/cloudy.jpg",
         "partly-cloudy-day": "⛅",
         "partly-cloudy-night": "🌚"
       }
@@ -143,7 +141,7 @@ export default {
       });
 
       API.getForecast(lat, lng).then(result => {
-       // console.log(result);
+        // console.log(result);
         this.forecast = result;
         this.currentTemp = Math.round(this.forecast.currently.temperature);
         this.currentWind = Math.round(this.forecast.currently.windSpeed);
@@ -161,7 +159,7 @@ export default {
           this.forecast.daily.data[0].precipProbability * 100
         );
         this.forc();
-       // this.changeBackground(this.forecast.currently.icon);
+        // this.changeBackground(this.forecast.currently.icon);
       });
     }
   },
@@ -189,6 +187,13 @@ export default {
   background-size: cover;
 }
 
+#temp-div {
+  color: aliceblue;
+  font-size: 3rem;
+  align-self: end;
+  padding: 100px;
+}
+
 #big-temp-div {
   font-size: 9rem;
   text-align: left;
@@ -200,22 +205,6 @@ export default {
 }
 
 #display-temp-bottomgrid {
-  grid-row: 2/2;
-  color: aliceblue;
-  width: 100%;
-  height: 100%;
-  justify-self: left;
-  padding-top: 100px;
-  padding-left: 100px;
-  font-size: 3rem;
-}
-
-#temp-div {
-  display: grid;
-  /* Split the grid so it has two hafs horizonatally*/
-  grid-template-rows: 1fr 1fr;
-  align-items: center;
-  justify-items: center;
 }
 
 #more-info-div {
@@ -250,7 +239,7 @@ export default {
 #more-weather-info {
 }
 
-#summ-loc{
+#summ-loc {
   text-align: left;
   font-size: 2rem;
 }
