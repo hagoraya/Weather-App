@@ -3,10 +3,12 @@
     <div id="temp-div">
       <div id="temp-summ-loc">
         <div id="big-temp-div">
-          <span>{{currentTemp}}°</span>
+          <p id="big-temp">{{currentTemp}}°</p>
+          <p
+            id="location"
+          >{{forecast.currently.summary}} {{icons[forecast.currently.icon]}} {{address.name}}</p>
         </div>
         <div id="summ-loc">
-          <span>{{forecast.currently.summary}} {{icons[forecast.currently.icon]}} {{address.name}}</span>
           <span></span>
         </div>
       </div>
@@ -190,18 +192,26 @@ export default {
 #temp-div {
   color: aliceblue;
   font-size: 3rem;
-  align-self: end;
-  padding: 100px;
+  align-self: end; /* moves it to bottom */
+  justify-self: start; /*moves it to left */
 }
 
-#big-temp-div {
-  font-size: 9rem;
-  text-align: left;
-  width: 50%;
+#location {
+  font-size: 2rem;
 }
 
 #temp-summ-loc {
-  display: inline;
+  display: inline-block;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#big-temp-div {
+  display: inherit;
+  font-size: 9rem;
+  align-self: start;
 }
 
 #display-temp-bottomgrid {
